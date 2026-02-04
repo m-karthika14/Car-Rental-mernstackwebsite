@@ -75,8 +75,8 @@ About Us – Brand story, trust, and credibility
 
 Contact Us – Enquiry form, contact details, and WhatsApp CTA
 
-## Tech Stack
-# Frontend
+
+##  Frontend
 
 React
 
@@ -88,7 +88,7 @@ Framer Motion (animations)
 
 Responsive Grid System
 
-# Backend (Scalable)
+##  Backend (Scalable)
 
 Node.js / Express
 
@@ -99,6 +99,7 @@ Integrations
 WhatsApp Business API (optional, future-ready)
 
 WhatsApp Business API 
+
 
 
 
