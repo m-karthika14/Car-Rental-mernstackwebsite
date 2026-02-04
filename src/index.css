@@ -14,6 +14,19 @@
       sans-serif;
   }
 
+  /* Prevent horizontal scrolling on small devices where some elements
+     (transforms, fixed-width inputs, or absolute children) can cause overflow */
+  html, body, #root {
+    overflow-x: hidden;
+  }
+
+  /* Make images strictly responsive to avoid accidental overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
     letter-spacing: -0.02em;

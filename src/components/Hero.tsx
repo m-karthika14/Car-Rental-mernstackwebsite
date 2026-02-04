@@ -60,7 +60,7 @@ export default function Hero() {
               onChange={() => { /* controlled by form element value when submitted */ }}
               type="text"
               placeholder="Search Luxury Cars & Services"
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-white/60 px-6 py-4 pr-12 rounded-full w-80 focus:outline-none focus:border-white/40 transition-all"
+              className="bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-white/60 px-6 py-4 pr-12 rounded-full w-full sm:w-80 max-w-full focus:outline-none focus:border-white/40 transition-all"
             />
             <button type="submit" aria-label="Search" className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60">
               <Search size={20} />
