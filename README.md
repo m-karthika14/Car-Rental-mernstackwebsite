@@ -4,7 +4,8 @@ Luxury Car Rental Platform
 A modern, premium, and Indian-friendly luxury car rental platform built with a strong focus on elite UI/UX, smooth animations, and a seamless booking experience.
 The platform supports chauffeur-driven rentals, airport pickup & drop, and self-drive cars, and is designed to scale smoothly from an MVP to a full production system.
 
-✨ Features
+Features
+
 🏠 Website & UI
 
 Modern, elite, and minimal design
@@ -99,6 +100,7 @@ Integrations
 WhatsApp Business API (optional, future-ready)
 
 WhatsApp Business API 
+
 
 
 
