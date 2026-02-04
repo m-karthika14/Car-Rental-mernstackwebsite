@@ -6,17 +6,14 @@ The platform supports chauffeur-driven rentals, airport pickup & drop, and self-
 
 Features
 
-🏠 Website & UI
+## Website & UI
 
 Modern, elite, and minimal design
-
 Fully responsive (desktop-first, mobile-optimized)
-
 Smooth animations and micro-interactions
-
 Consistent typography, color palette, and card system across all pages
 
-🚘 Car Listings
+## Car Listings
 
 Dedicated Cars page
 
@@ -100,6 +97,7 @@ Integrations
 WhatsApp Business API (optional, future-ready)
 
 WhatsApp Business API 
+
 
 
 
