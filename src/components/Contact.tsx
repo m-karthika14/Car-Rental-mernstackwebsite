@@ -12,7 +12,11 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    // Open WhatsApp with prefilled message to +91 79750 72712
+    const waNumber = '917975072712';
+    const msg = `Enquiry from website:\nName: ${formData.name || '-'}\nMobile: ${formData.mobile || '-'}\nEmail: ${formData.email || '-'}\nMessage: ${formData.message || '-'}\n`;
+    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -83,10 +87,10 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10">
+              <div className="pt-6 border-t border-white/10">
               <h3 className="text-white font-medium mb-4">Quick Contact</h3>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/917975072712"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300"
@@ -166,7 +170,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <Button className="w-full">SEND ENQUIRY</Button>
+                <Button className="w-full" type="submit">SEND ENQUIRY</Button>
               </form>
             </div>
           </div>

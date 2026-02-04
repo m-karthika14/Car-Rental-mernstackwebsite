@@ -28,9 +28,21 @@ export default function Showrooms() {
   }, []);
 
   const handleBook = () => {
-    // Placeholder action — integrate with booking flow as needed
-    console.log('BOOK NOW', { type, from, to, pickupDate, pickupTime, dropTime, returnDate });
-    alert('Book Now clicked — check console for form values');
+    // Open WhatsApp with booking details to +91 79750 72712
+    const waNumber = '917975072712';
+    const msgParts = [
+      `Booking enquiry from website`,
+      `Type: ${type}`,
+      from ? `From: ${from}` : null,
+      to ? `To: ${to}` : null,
+      pickupDate ? `Pickup Date: ${pickupDate}` : null,
+      pickupTime ? `Pickup Time: ${pickupTime}` : null,
+      dropTime ? `Drop Time: ${dropTime}` : null,
+      returnDate ? `Return Date: ${returnDate}` : null,
+    ].filter(Boolean as any);
+    const msg = msgParts.join('%0A');
+    const url = `https://wa.me/${waNumber}?text=${msg}`;
+    window.open(url, '_blank');
   };
 
   return (

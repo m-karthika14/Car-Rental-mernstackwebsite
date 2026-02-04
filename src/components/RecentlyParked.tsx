@@ -477,178 +477,129 @@ export function CarsPage() {
 }
 
 export function CarDetailsPage({ car, onBack }: { car: Car; onBack?: () => void }) {
-  const [selectedPackage, setSelectedPackage] = useState('Standard – 8 Hr / 80 Kms');
   const [dateFrom, setDateFrom] = useState('');
   const [timeFrom, setTimeFrom] = useState('');
-  const [addKms, setAddKms] = useState(0);
-  const [addHrs, setAddHrs] = useState(0);
+  const [timePeriod, setTimePeriod] = useState<'AM' | 'PM'>('AM');
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
-  const [pickup, setPickup] = useState('');
-  const [drop, setDrop] = useState('');
-  const [notes, setNotes] = useState('');
 
   const base = parseInt((car.price.replace(/[₹,]/g, '')) || '0', 10);
   const driverAllowance = 2000;
-  const extraKm = 200 * addKms;
-  const extraHr = 2000 * addHrs;
-  const total = base + driverAllowance + extraKm + extraHr;
-
+  const total = base + driverAllowance;
   return (
-    <div className="min-h-screen bg-neutral-50 text-black py-12 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          {/* back button - call onBack if present, then ensure hash goes to cars */}
-          <button onClick={() => { if (onBack) onBack(); window.location.hash = '#cars'; }} className="mb-6 text-sm text-neutral-600 flex items-center gap-2"> <ChevronLeft size={16} /> Back</button>
+    <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-neutral-50 text-black pt-20 pb-12 px-6">
+      <div className="max-w-5xl mx-auto">
 
-          <div className="bg-white rounded-lg overflow-hidden shadow">
-            <div className="p-6 border-b">
-              <h2 className="text-3xl font-bold">{car.name}</h2>
-              <p className="text-2xl font-bold mt-2">{car.price}</p>
-            </div>
+        {/* Centered card */}
+        <button onClick={() => { if (onBack) onBack(); window.location.hash = '#cars'; }} className="mb-6 text-sm text-neutral-600 flex items-center gap-2"> <ChevronLeft size={16} /> Back</button>
 
-            {/* image gallery - single large image */}
-            <div className="p-6">
-              <div className="h-72 bg-neutral-100 overflow-hidden rounded">
-                <img src={car.image} alt={car.name} className="w-full h-full object-cover" />
-              </div>
-            </div>
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 lg:p-10 items-start">
 
-            {/* Info / Please read */}
-            <div className="p-6 border-t">
-              <h3 className="font-semibold mb-3">PLEASE READ</h3>
-              <ul className="list-disc pl-5 text-neutral-600">
-                <li>Distance and time calculated from garage to garage.</li>
-                <li>Tolls, taxes, and parking charged as actuals.</li>
-                <li>Similar car may be provided if unavailable.</li>
-                <li>Images are for reference only.</li>
-                <li>Extra usage charged at the end of trip.</li>
-                <li>Refund & cancellation as per policy. <button className="text-indigo-600 underline ml-2">Read More</button></li>
-              </ul>
-            </div>
-
-            {/* Package */}
-            <div className="p-6 border-t">
-              <h4 className="font-semibold mb-3">Packages</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className={`p-4 border rounded ${selectedPackage.includes('Standard') ? 'border-black' : 'border-neutral-200'}`}>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-semibold">Standard – 8 Hr / 80 Kms</div>
-                      <div className="text-sm text-neutral-600">Seating: 5 • Luggage: 3 • Auto</div>
-                    </div>
-                    <div>
-                      <button onClick={() => setSelectedPackage('Standard – 8 Hr / 80 Kms')} className="px-4 py-2 border rounded">Choose</button>
-                    </div>
-                  </div>
-                </div>
-                <div className={`p-4 border rounded ${selectedPackage.includes('Standard') ? '' : 'border-neutral-200'}`}>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-semibold">Premium – 12 Hr / 150 Kms</div>
-                      <div className="text-sm text-neutral-600">Seating: 5 • Luggage: 4 • Auto</div>
-                    </div>
-                    <div>
-                      <button onClick={() => setSelectedPackage('Premium – 12 Hr / 150 Kms')} className="px-4 py-2 border rounded">Choose</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Pricing details & feedback */}
-            <div className="p-6 border-t grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* LEFT: Car details */}
+            <div className="space-y-6">
               <div>
-                <h5 className="font-semibold mb-2">Pricing Details</h5>
-                <ul className="text-sm text-neutral-600">
-                  <li>Driver Allowance: ₹2,000</li>
-                  <li>Extra Km: ₹200</li>
-                  <li>Extra Hr: ₹2,000</li>
+                <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight">{car.name}</h2>
+                <p className="mt-2 text-2xl font-bold text-black">{car.price}<span className="text-sm font-medium text-neutral-500"> /day</span></p>
+              </div>
+
+              <div className="w-full rounded-xl overflow-hidden shadow-sm">
+                <img src={car.image} alt={car.name} className="w-full h-80 object-cover rounded-xl" />
+              </div>
+
+              <div className="pt-2">
+                <h3 className="font-semibold mb-3">Please read</h3>
+                <ul className="list-disc pl-5 text-neutral-600 space-y-2">
+                  <li>Distance and time calculated from garage to garage.</li>
+                  <li>Tolls, taxes, and parking charged as actuals.</li>
+                  <li>Similar car may be provided if unavailable.</li>
+                  <li>Images are for reference only.</li>
+                  <li>Extra usage charged at the end of trip.</li>
                 </ul>
               </div>
 
-              <div>
-                <h5 className="font-semibold mb-2">Feedback</h5>
-                <div className="p-4 bg-neutral-100 rounded">
-                  <p className="text-sm">“Nice experience”</p>
-                  <div className="mt-2 text-xs text-neutral-600">— Arya</div>
-                </div>
-              </div>
+              {/* Packages removed as requested */}
             </div>
+
+            {/* RIGHT: Booking form inside same card */}
+            <aside className="w-full">
+              <div className="bg-white">
+                <h4 className="text-2xl font-semibold mb-4">Book Now</h4>
+
+                {/* Selected package display removed */}
+
+                <form
+                  className="space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    // build a concise message for WhatsApp
+                    const timeDisplay = timeFrom ? `${timeFrom} ${timePeriod}` : '';
+                    const msg = `Hello, I would like to rent ${car.name}${dateFrom ? ' on ' + dateFrom : ''}${timeDisplay ? ' at ' + timeDisplay : ''}. Name: ${name || '-'}, Mobile: ${mobile || '-'}, Email: ${email || '-'}.`;
+                    const waNumber = '917975072712'; // +91 79750 72712
+                    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+                    // open WhatsApp in a new tab (works on mobile and desktop)
+                    window.open(url, '_blank');
+                  }}
+                >
+                  <div>
+                    <label className="text-sm block mb-1">Date</label>
+                    <input value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} type="date" className="w-full rounded-lg border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10" />
+                  </div>
+
+                  <div>
+                    <label className="text-sm block mb-1">Time</label>
+                    <div className="flex gap-3">
+                      <input value={timeFrom} onChange={(e) => setTimeFrom(e.target.value)} type="time" className="flex-1 rounded-lg border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10" />
+                      <select value={timePeriod} onChange={(e) => setTimePeriod(e.target.value as 'AM' | 'PM')} className="rounded-lg border border-neutral-200 px-3 py-3 bg-white">
+                        <option>AM</option>
+                        <option>PM</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Pickup Details removed */}
+
+                  <div className="pt-2 border-t border-neutral-100" />
+
+                  <div>
+                    <label className="text-sm block mb-1">Name</label>
+                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" className="w-full rounded-lg border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10" />
+                  </div>
+
+                  <div>
+                    <label className="text-sm block mb-1">Mobile Number</label>
+                    <input value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="Mobile number" className="w-full rounded-lg border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10" />
+                  </div>
+
+                  <div>
+                    <label className="text-sm block mb-1">Email Address</label>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@domain.com" className="w-full rounded-lg border border-neutral-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10" />
+                  </div>
+
+                  {/* Additional Kms / Hrs removed */}
+
+                  {/* Notes textarea removed */}
+
+                  <div className="mt-4 border-t pt-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="text-sm text-neutral-600">Estimated Total</div>
+                      <div className="font-bold">₹{total.toLocaleString()}</div>
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={!dateFrom || !timeFrom || !name || !mobile}
+                      className="w-full bg-black text-white px-4 py-3 rounded-full disabled:opacity-50 hover:opacity-95"
+                    >
+                      Rent Now
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </aside>
 
           </div>
         </div>
-
-        {/* Booking sidebar */}
-        <aside className="lg:col-span-1">
-          <div className="sticky top-32 bg-white p-6 rounded-lg shadow">
-            <h4 className="font-semibold text-lg mb-4">Book this car</h4>
-            <div className="mb-4">
-              <div className="text-sm text-neutral-600">Selected package</div>
-              <div className="font-semibold mt-2">{selectedPackage}</div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-3">
-              <label className="text-sm">From Date</label>
-              <input value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} type="date" className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">From Time</label>
-              <input value={timeFrom} onChange={(e) => setTimeFrom(e.target.value)} type="time" className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">Additional Kms</label>
-              <div className="flex items-center gap-2">
-                <button onClick={() => setAddKms(Math.max(0, addKms - 1))} className="px-3 py-1 border rounded">-</button>
-                <div className="px-3">{addKms}</div>
-                <button onClick={() => setAddKms(addKms + 1)} className="px-3 py-1 border rounded">+</button>
-              </div>
-
-              <label className="text-sm">Additional Hrs</label>
-              <div className="flex items-center gap-2">
-                <button onClick={() => setAddHrs(Math.max(0, addHrs - 1))} className="px-3 py-1 border rounded">-</button>
-                <div className="px-3">{addHrs}</div>
-                <button onClick={() => setAddHrs(addHrs + 1)} className="px-3 py-1 border rounded">+</button>
-              </div>
-
-              <label className="text-sm">Pickup</label>
-              <input value={pickup} onChange={(e) => setPickup(e.target.value)} className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">Drop</label>
-              <input value={drop} onChange={(e) => setDrop(e.target.value)} className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">Name</label>
-              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">Mobile</label>
-              <input value={mobile} onChange={(e) => setMobile(e.target.value)} className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">Email</label>
-              <input value={email} onChange={(e) => setEmail(e.target.value)} className="w-full rounded border px-3 py-2" />
-
-              <label className="text-sm">Notes (optional)</label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} className="w-full rounded border px-3 py-2" />
-            </div>
-
-            <div className="mt-4 border-t pt-4">
-              <div className="flex items-center justify-between mb-3">
-                <div className="text-sm text-neutral-600">Estimated Total</div>
-                <div className="font-bold">₹{total.toLocaleString()}</div>
-              </div>
-              <button
-                onClick={() => {
-                  // Minimal placeholder for payment flow
-                  console.log('Proceed to pay', { car: car.name, dateFrom, timeFrom, addKms, addHrs, name, mobile, pickup, drop, notes });
-                  alert('Proceed to payment – this is a demo flow.');
-                }}
-                disabled={!dateFrom || !timeFrom || !name || !mobile}
-                className="w-full bg-black text-white px-4 py-3 rounded-full disabled:opacity-50"
-              >
-                Pay Now
-              </button>
-            </div>
-          </div>
-        </aside>
-
       </div>
     </div>
   );

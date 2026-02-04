@@ -67,8 +67,13 @@ export default function Hero() {
             </button>
           </form>
 
-          <a href="#cars" className="bg-white text-black px-8 py-4 rounded-full font-medium hover:bg-neutral-200 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-white/20">
-            Explore Rides
+          <a
+            href="https://wa.me/917975072712"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-black px-8 py-4 rounded-full font-medium hover:bg-neutral-200 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-white/20"
+          >
+            Book Now
           </a>
         </div>
 
