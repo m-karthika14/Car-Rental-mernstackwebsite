@@ -4,85 +4,58 @@ The platform supports chauffeur-driven rentals, airport pickup/drop, and self-dr
 
 Features:
 Website & UI
-
 Modern, elite, and minimal design
-
 Fully responsive (desktop-first, mobile-optimized)
-
 Smooth animations and micro-interactions
-
 Consistent typography, colors, and card system across all pages
 
 Car Listings
-
 Dedicated Cars page
 
 Categories:
-
 Chauffeur-Driven
-
 Airport Pickup / Drop
-
 Self-Drive
-
 Search functionality
 
 4-column grid layout (desktop)
-
 Reusable car card design
 
-📅 Booking Flow
-
+Booking Flow
 Inline booking panel on “Book Now”
 
 Ride details:
-
 Date & time selection
-
 Additional kilometers & hours
-
 Confirmation popup with:
-
 Booking summary
-
 Personal details form
-
 Final “Pay Now” CTA
 
-💬 WhatsApp Integration (MVP)
-
+WhatsApp Integration (MVP)
 “Book Now” can directly open WhatsApp
 
 
 Dynamic message support (car name, date, city)
 
-📄 Additional Pages
-
+Additional Pages
 Services – Rental offerings with premium cards
-
 About Us – Brand story, trust & credibility
-
 Contact Us – Enquiry form, contact details, WhatsApp CTA
 
-🧱 Tech Stack
+Tech Stack
 Frontend
-
 React
-
 Tailwind CSS
-
 Lucide Icons
-
 Framer Motion (animations)
-
 Responsive Grid System
 
 Backend 
-
 Node.js / Express
-
 MongoDB
 
 WhatsApp Business API 
+
 
 
