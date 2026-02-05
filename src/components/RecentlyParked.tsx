@@ -7,7 +7,7 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 101,
       name: 'Mercedes GLS 350',
       price: '₹20,000',
-      image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://image2url.com/r2/default/images/1770297350295-fa54d71b-c2fd-49ac-9629-6379be5ef02a.avif',
       year: '2024',
       mileage: '80 Kms',
       fuel: 'Petrol'
@@ -16,7 +16,7 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 102,
       name: 'Mercedes GLS 350',
       price: '₹20,000',
-      image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/J4fy1Cn1/innova-hycross-exterior-right-front-three-quarter-74.avif',
       year: '2024',
       mileage: '8 Hr 80Kms',
       fuel: 'Petrol'
@@ -25,45 +25,19 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 103,
       name: 'Audi A8',
       price: '₹22,000',
-      image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/tg2CnKXV/exterior-grille.avif',
       year: '2023',
       mileage: '70 Kms',
       fuel: 'Petrol'
     },
-    {
-      id: 104,
-      name: 'Range Rover Vogue',
-      price: '₹28,000',
-      image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2024',
-      mileage: '50 Kms',
-      fuel: 'Diesel'
-    },
-    {
-      id: 105,
-      name: 'Volvo XC90',
-      price: '₹18,000',
-      image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2023',
-      mileage: '90 Kms',
-      fuel: 'Petrol'
-    },
-    {
-      id: 106,
-      name: 'Toyota Land Cruiser',
-      price: '₹19,500',
-      image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2024',
-      mileage: '85 Kms',
-      fuel: 'Diesel'
-    }
+    // trimmed to top 3
   ],
   airport: [
     {
       id: 201,
       name: 'Honda Accord',
       price: '₹3,000',
-      image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/Gpkv0hx0/toyota-innova-crysta-left-front-three-quarter0.avif',
       year: '2023',
       mileage: '10 Kms',
       fuel: 'Petrol'
@@ -72,7 +46,7 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 202,
       name: 'Toyota Camry',
       price: '₹3,200',
-      image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/BbdvQ2Jp/i20-exterior-front-view-3.avif',
       year: '2024',
       mileage: '8 Kms',
       fuel: 'Petrol'
@@ -81,45 +55,19 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 203,
       name: 'Hyundai Sonata',
       price: '₹2,800',
-      image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/SQXCqrrL/innova-crysta-exterior-right-front-three-quarter-3.avif',
       year: '2023',
       mileage: '12 Kms',
       fuel: 'Petrol'
     },
-    {
-      id: 204,
-      name: 'Skoda Superb',
-      price: '₹3,500',
-      image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2024',
-      mileage: '9 Kms',
-      fuel: 'Diesel'
-    },
-    {
-      id: 205,
-      name: 'Kia K5',
-      price: '₹2,900',
-      image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2023',
-      mileage: '11 Kms',
-      fuel: 'Petrol'
-    },
-    {
-      id: 206,
-      name: 'Nissan Altima',
-      price: '₹2,700',
-      image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2024',
-      mileage: '7 Kms',
-      fuel: 'Petrol'
-    }
+    // trimmed to top 3
   ],
   self: [
     {
       id: 301,
       name: 'Mini Cooper',
       price: '₹1,500',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/tg2CnKXV/exterior-grille.avif',
       year: '2023',
       mileage: '5 Kms',
       fuel: 'Petrol'
@@ -128,7 +76,7 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 302,
       name: 'Volkswagen Polo',
       price: '₹1,200',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://image2url.com/r2/default/images/1770297350295-fa54d71b-c2fd-49ac-9629-6379be5ef02a.avif',
       year: '2022',
       mileage: '6 Kms',
       fuel: 'Petrol'
@@ -137,38 +85,12 @@ const curatedCollections: Record<string, Array<{id:number;name:string;price:stri
       id: 303,
       name: 'Ford Fiesta',
       price: '₹1,100',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://i.postimg.cc/BbdvQ2Jp/i20-exterior-front-view-3.avif',
       year: '2023',
       mileage: '4 Kms',
       fuel: 'Petrol'
     },
-    {
-      id: 304,
-      name: 'Honda Jazz',
-      price: '₹1,300',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2024',
-      mileage: '3 Kms',
-      fuel: 'Petrol'
-    },
-    {
-      id: 305,
-      name: 'Toyota Yaris',
-      price: '₹1,400',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2023',
-      mileage: '2 Kms',
-      fuel: 'Petrol'
-    },
-    {
-      id: 306,
-      name: 'Suzuki Swift',
-      price: '₹1,250',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800',
-      year: '2022',
-      mileage: '5 Kms',
-      fuel: 'Petrol'
-    }
+    // trimmed to top 3
   ]
 };
 
@@ -276,7 +198,7 @@ export default function RecentlyParked() {
           <h3 className="text-2xl font-semibold mb-4">{selectedTab === 'chauffeur' ? 'Chauffeur Driven' : selectedTab === 'airport' ? 'Airport Pickup / Drop' : 'Self-Drive'}</h3>
           <div className="flex justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-[1200px] w-full">
-              {curatedCollections[selectedTab].slice(0, 6).map((car, index) => (
+              {curatedCollections[selectedTab].slice(0, 3).map((car, index) => (
                 <div
                   key={car.id}
                   className={`bg-white rounded-lg overflow-hidden group cursor-pointer transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -353,8 +275,8 @@ export function CarsPage() {
   }, []);
 
   const all = curatedCollections[activeTab];
-  // Expand to 12 cars by repeating the array if needed (reuse images as requested)
-  const expanded: Car[] = Array.from({ length: 12 }, (_, i) => all[i % all.length]);
+  // show only available cars for the selected tab (top 3)
+  const expanded: Car[] = all.slice(0, 3);
 
   const filtered = expanded.filter(c =>
     (c.name + ' ' + c.price + ' ' + c.fuel).toLowerCase().includes(query.toLowerCase())
@@ -436,11 +358,12 @@ export function CarsPage() {
 
         {/* Grid */}
         <div className="">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
+          {/* use a centered flex wrapper so 3 cards sit centered for each category */}
+          <div className="flex flex-wrap justify-center gap-6">
             {filtered.map((car, idx) => (
               <article
                 key={`${car.id}-${idx}`}
-                className="bg-white rounded-lg overflow-hidden group cursor-pointer transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 text-black max-w-[300px] mx-auto"
+                className="bg-white rounded-lg overflow-hidden group cursor-pointer transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 text-black max-w-[300px]"
                 onClick={() => setSelectedCar(car)}
                 style={{ transitionDelay: `${idx * 30}ms` }}
               >
