@@ -22,7 +22,14 @@ function App() {
   };
 
   useEffect(() => {
-    const onHash = () => setHash(window.location.hash || '#home');
+    const onHash = () => {
+      setHash(window.location.hash || '#home');
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      } catch (e) {
+        // ignore in non-browser environments
+      }
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);

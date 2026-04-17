@@ -1,4 +1,5 @@
-import { UserCircle, Plane, Car, Briefcase, Heart, Clock } from 'lucide-react';
+import { Car, Navigation2, CheckCircle2, Shield, Key } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 import ServiceCard from '../components/ServiceCard';
 import Button from '../components/Button';
 
@@ -7,11 +8,20 @@ interface ServicesProps {
 }
 
 export default function Services({ onNavigate }: ServicesProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setIsVisible(true); }, { threshold: 0.05 });
+    if (headerRef.current) obs.observe(headerRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="bg-black min-h-screen pt-20">
       <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-20 animate-fadeIn">
-          <div className="w-16 h-px bg-white/30 mx-auto mb-8" />
+        <div ref={headerRef} className={`mb-20 transition-all duration-700 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Self Drive Car Services near Goa Airport
           </h1>
@@ -20,53 +30,54 @@ export default function Services({ onNavigate }: ServicesProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-          <div className="animate-slideUp" style={{ animationDelay: '0s' }}>
-            <ServiceCard
-              icon={UserCircle}
-              title="Chauffeur-Driven Rentals"
-              description="Professional drivers for business, events, and city travel. Experience comfort and convenience with our expert chauffeurs."
-            />
+        <div className="mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="animate-slideUp" style={{ animationDelay: '0s' }}>
+              <ServiceCard
+                icon={Car}
+                title="Self-drive car rentals"
+                description="Choose from our wide fleet for independent travel across Goa."
+                showButton={false}
+              />
+            </div>
+
+            <div className="animate-slideUp" style={{ animationDelay: '0.1s' }}>
+              <ServiceCard
+                icon={Navigation2}
+                title="Airport pickup & drop-off"
+                description="Reliable on-time transfers to and from the airport and stations."
+                showButton={false}
+              />
+            </div>
+
+            <div className="animate-slideUp" style={{ animationDelay: '0.2s' }}>
+              <ServiceCard
+                icon={CheckCircle2}
+                title="Daily & long-term rentals"
+                description="Flexible daily and extended rental plans at competitive rates."
+                showButton={false}
+              />
+            </div>
           </div>
 
-          <div className="animate-slideUp" style={{ animationDelay: '0.1s' }}>
-            <ServiceCard
-              icon={Plane}
-              title="Airport Pickup & Drop"
-              description="On-time luxury transfers to and from the airport. Never worry about missing a flight with our punctual service."
-            />
-          </div>
+          <div className="flex justify-center gap-8 mt-8">
+            <div className="w-full sm:w-1/2 lg:w-1/3">
+              <ServiceCard
+                icon={Shield}
+                title="Family & group travel vehicles"
+                description="Spacious vehicles suitable for families and group travel needs."
+                showButton={false}
+              />
+            </div>
 
-          <div className="animate-slideUp" style={{ animationDelay: '0.2s' }}>
-            <ServiceCard
-              icon={Car}
-              title="Self-Drive Rentals"
-              description="Premium cars with complete freedom and flexibility. Take control of your journey with our well-maintained fleet."
-            />
-          </div>
-
-          <div className="animate-slideUp" style={{ animationDelay: '0.3s' }}>
-            <ServiceCard
-              icon={Briefcase}
-              title="Corporate Travel"
-              description="Reliable luxury transportation for business professionals. Impress clients and maintain your professional image."
-            />
-          </div>
-
-          <div className="animate-slideUp" style={{ animationDelay: '0.4s' }}>
-            <ServiceCard
-              icon={Heart}
-              title="Wedding & Event Rentals"
-              description="Arrive in style on your most special occasions. Make unforgettable memories with our premium wedding cars."
-            />
-          </div>
-
-          <div className="animate-slideUp" style={{ animationDelay: '0.5s' }}>
-            <ServiceCard
-              icon={Clock}
-              title="Hourly & Daily Packages"
-              description="Flexible rental options tailored to your needs. Choose from hourly rates to extended daily packages."
-            />
+            <div className="w-full sm:w-1/2 lg:w-1/3">
+              <ServiceCard
+                icon={Key}
+                title="Budget and premium car options"
+                description="Choose budget-friendly cars or premium models to match your trip."
+                showButton={false}
+              />
+            </div>
           </div>
         </div>
 

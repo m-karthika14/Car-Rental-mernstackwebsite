@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { blogPosts, BlogPost } from '../data/blogs';
 import { ChevronRight, Calendar, ArrowLeft } from 'lucide-react';
 
 export function BlogIndex() {
   return (
     <div className="bg-black min-h-screen text-white pt-24 pb-16 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-[2cm]">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Prime Self Drive Blog</h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">Prime Self Drive Blog</h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Travel guides, tips, and everything you need to know about self-drive car rentals in Goa, specifically near Dabolim Airport and Vasco Railway Station.
           </p>
-          <div className="w-24 h-1 bg-yellow-400 mx-auto mt-6"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -70,19 +70,31 @@ export function BlogPostPage({ slug }: { slug: string }) {
     );
   }
 
+  const [isVisible, setIsVisible] = useState(false);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setIsVisible(true);
+    }, { threshold: 0.05 });
+
+    if (headerRef.current) obs.observe(headerRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="bg-black min-h-screen text-white pt-24 pb-16 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto mt-[2cm]">
         <a href="#blogs" className="inline-flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors mb-8 font-medium">
           <ArrowLeft size={16} /> Back to all articles
         </a>
 
-        <div className="mb-8">
+        <div className="mb-8" ref={headerRef}>
           <div className="flex items-center gap-3 text-sm text-yellow-400 font-bold uppercase tracking-wider mb-4">
             <span className="bg-yellow-400/10 px-3 py-1 rounded-full">{post.category}</span>
             <span className="flex items-center gap-1 text-gray-400"><Calendar size={14} /> {post.date}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">{post.title}</h1>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">{post.title}</h1>
         </div>
 
         <div className="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-12">
@@ -117,3 +129,5 @@ export function BlogPostPage({ slug }: { slug: string }) {
     </div>
   );
 }
+
+// End of Blog components

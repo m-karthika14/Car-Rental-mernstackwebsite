@@ -2,13 +2,14 @@ interface ServiceCardProps {
   icon: any;
   title: string;
   description: string;
+  showButton?: boolean;
 }
 
-export default function ServiceCard({ icon: Icon, title, description }: ServiceCardProps) {
+export default function ServiceCard({ icon: Icon, title, description, showButton = true }: ServiceCardProps) {
   return (
     <div className="bg-white rounded-xl p-6 h-full shadow-lg flex flex-col gap-4">
       <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center">
-        {Icon ? <Icon size={20} /> : null}
+        {Icon ? <Icon size={20} className="text-neutral-700" /> : null}
       </div>
 
       <div className="flex-1">
@@ -16,9 +17,11 @@ export default function ServiceCard({ icon: Icon, title, description }: ServiceC
         <p className="text-sm text-neutral-600">{description}</p>
       </div>
 
-      <div>
-        <button className="mt-4 inline-block bg-black text-white px-4 py-2 rounded-full text-sm">Learn More</button>
-      </div>
+      {showButton ? (
+        <div>
+          <button className="mt-4 inline-block bg-black text-white px-4 py-2 rounded-full text-sm">Learn More</button>
+        </div>
+      ) : null}
     </div>
   );
 }

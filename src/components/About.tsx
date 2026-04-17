@@ -1,15 +1,24 @@
-import { CheckCircle2 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setIsVisible(true); }, { threshold: 0.05 });
+    if (headerRef.current) obs.observe(headerRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="bg-black min-h-screen pt-20" id="about">
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-20 animate-fadeIn">
-          <div className="w-16 h-px bg-white/30 mx-auto mb-8" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+      <section className="py-24 px-6 max-w-7xl mx-auto mt-[0.2cm]">
+        <div ref={headerRef} className={`mb-20 transition-all duration-700 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Self Drive Car Rental near Goa Airport
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Looking for a budget-friendly self-drive car rental near Goa Airport or Vasco Railway Station? We provide a wide range of well-maintained cars that give you the freedom to travel at your own pace.
           </p>
         </div>

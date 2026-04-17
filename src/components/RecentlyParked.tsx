@@ -156,29 +156,21 @@ const allCars: Car[] = [
 ];
 
 export default function RecentlyParked() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) setIsVisible(true); }, { threshold: 0.1 });
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 bg-neutral-50" id="collection">
+    <section className="py-24 px-6 bg-neutral-50 mt-[2.5cm]" id="collection">
       <div className="container mx-auto">
-        <div className={`flex flex-col mb-12 transition-all duration-1000 items-center text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="flex flex-col mb-12 items-center text-center">
+          <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Self Drive Cars near Goa Airport</h2>
-          <div className="h-1 w-24 bg-black mx-auto mb-4"></div>
           <p className="text-gray-600 font-medium">Note: All prices are per day. Minimum 3-day booking required for new brand cars.</p>
         </div>
 
         <div>
           <div className="flex justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1200px] w-full">
-              {allCars.map((car, index) => (
-                <div key={car.id} className={`bg-white rounded-lg overflow-hidden group transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+              {allCars.map((car) => (
+                <div key={car.id} className="bg-white rounded-lg overflow-hidden group hover:shadow-2xl hover:-translate-y-2">
                   <div className="relative h-64 bg-neutral-100 overflow-hidden cursor-pointer" onClick={() => { window.location.hash = `#cars?id=${car.id}`; }}>
                     <img src={car.image} alt={car.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     <span className="absolute top-4 right-4 bg-white/90 backdrop-blur text-black text-xs font-bold px-3 py-1 rounded-full">{car.category}</span>
@@ -248,11 +240,12 @@ export function CarsPage() {
   }
 
   return (
-    <main ref={sectionRef} className="min-h-screen bg-black text-white py-20 px-6">
+    <main ref={sectionRef} className="min-h-screen bg-black text-white py-20 px-6 mt-[2.5cm]">
       <div className="container mx-auto">
         <header className={`mb-12 transition-all duration-700 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          <h1 className="text-4xl md:text-5xl font-bold mt-8 mb-4">Self Drive Car Rental near Goa Airport</h1>
-          <p className="text-gray-400 mb-6">Explore our fleet of well-maintained self-drive cars near Vasco Railway Station & Goa Airport. Minimum 3-day booking required for new brand cars.</p>
+          <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
+          <h1 className="text-5xl md:text-6xl font-bold mt-8 mb-4">Self Drive Car Rental near Goa Airport</h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-6">Explore our well-maintained self-drive cars near Vasco Station & Goa Airport. New cars require a minimum 3-day booking.</p>
           <div className="max-w-2xl mx-auto">
             <input aria-label="Search cars" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by car name or category (e.g. SUV, Hatch)" className="w-full rounded-full px-6 py-3 bg-neutral-800 border border-neutral-700 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/20 transition text-base" />
           </div>

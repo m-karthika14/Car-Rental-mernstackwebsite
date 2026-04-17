@@ -1,6 +1,6 @@
-import { MapPin, Phone, Mail, Clock, MessageCircle, Star, Globe } from 'lucide-react';
+import { MapPin, Phone, Clock, MessageCircle, Star } from 'lucide-react';
 import Button from './Button';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +9,15 @@ export default function Contact() {
     email: '',
     message: '',
   });
+
+  const [isVisible, setIsVisible] = useState(false);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setIsVisible(true); }, { threshold: 0.05 });
+    if (headerRef.current) obs.observe(headerRef.current);
+    return () => obs.disconnect();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +37,7 @@ export default function Contact() {
   return (
     <div className="bg-black min-h-screen pt-20" id="contact">
       <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-20 animate-fadeIn">
+        <div ref={headerRef} className={`mb-20 transition-all duration-700 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Contact Us
@@ -54,7 +63,13 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <a
+                href="https://google.com/maps/place/PRIME+SELF+DRIVE+CAR+GOA+AIRPORT/data=!4m2!3m1!1s0x0:0x5cf10d7ada3f6336?sa=X&ved=1t:2428&hl=en-GB&ictx=111"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open location in Google Maps"
+                className="flex items-start gap-4 cursor-pointer no-underline"
+              >
                 <div className="p-3 bg-white/5 rounded-lg border border-white/10">
                   <MapPin className="w-6 h-6 text-yellow-400" />
                 </div>
@@ -63,9 +78,12 @@ export default function Contact() {
                   <p className="text-gray-400 max-w-sm">
                     Tita Maria Apartments, Shop No. 9, Opp. SBI, Mangor Hill, Vasco da Gama, Goa – 403802
                   </p>
-                  <p className="text-yellow-400/80 text-sm mt-1">📍 1 km from Goa Airport & 1.5 km from Vasco Railway Station</p>
+                  <p className="text-yellow-400/80 text-sm mt-1 flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-yellow-400" />
+                    <span>1 km from Goa Airport & 1.5 km from Vasco Railway Station</span>
+                  </p>
                 </div>
-              </div>
+              </a>
 
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-white/5 rounded-lg border border-white/10">
@@ -78,38 +96,26 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-white/5 rounded-lg border border-white/10">
-                  <Globe className="w-6 h-6 text-yellow-400" />
-                </div>
-                <div>
-                  <h3 className="text-white font-medium mb-1">Website</h3>
-                  <a href="http://www.primeselfdrivecarrentalgoa.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition">
-                    www.primeselfdrivecarrentalgoa.com
-                  </a>
-                </div>
+              <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://wa.me/917385766602"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-colors duration-300"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Us
+                </a>
+                <a
+                  href="https://g.page/r/CTZjP9p6DfFcEBM/review"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-200 text-black font-bold rounded-lg transition-colors duration-300"
+                >
+                  <Star className="w-5 h-5 text-yellow-500" />
+                  Leave a Review
+                </a>
               </div>
-            </div>
-
-            <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://wa.me/917385766602"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-colors duration-300"
-              >
-                <MessageCircle className="w-5 h-5" />
-                WhatsApp Us
-              </a>
-              <a
-                href="https://g.page/r/CTZjP9p6DfFcEBM/review"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-200 text-black font-bold rounded-lg transition-colors duration-300"
-              >
-                <Star className="w-5 h-5 text-yellow-500" />
-                Leave a Review
-              </a>
             </div>
           </div>
 
@@ -172,21 +178,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl h-[450px] animate-fadeIn border border-white/10 shadow-2xl">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3846.5921868352697!2d73.8166649!3d15.3986161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfcbd4f810aa7f%3A0x10f01c7a7a3f5a36!2sPRIME%20SELF%20DRIVE%20CAR%20GOA%20AIRPORT!5e0!3m2!1sen!2sin!4v1704123456789!5m2!1sen!2sin" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Prime Self Drive Car Location"
-          ></iframe>
-          <div className="absolute top-4 left-4">
-             <a href="https://maps.app.goo.gl/PYySME3GUt3gSj6E9" target="_blank" rel="noopener noreferrer" className="bg-white text-black px-4 py-2 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition">Get Directions</a>
-          </div>
-        </div>
+        {/* Google Maps iframe removed (invalid embed); location links are available above */}
       </section>
     </div>
   );

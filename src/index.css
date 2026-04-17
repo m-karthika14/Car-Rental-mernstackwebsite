@@ -1,14 +1,17 @@
+/* stylelint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    @apply scroll-smooth;
-  }
+/* Ensure smooth scrolling behavior across the site */
+html { scroll-behavior: smooth; }
 
+@layer base {
   body {
-    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000;
+    color: #fff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
@@ -18,6 +21,7 @@
      (transforms, fixed-width inputs, or absolute children) can cause overflow */
   html, body, #root {
     overflow-x: hidden;
+    background: #000;
   }
 
   /* Make images strictly responsive to avoid accidental overflow */
@@ -28,7 +32,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 }

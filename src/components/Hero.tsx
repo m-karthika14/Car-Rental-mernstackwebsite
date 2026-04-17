@@ -1,4 +1,4 @@
-import { Search, ChevronDown } from 'lucide-react';
+import { ChevronDown, MapPin } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Hero() {
@@ -37,7 +37,7 @@ export default function Hero() {
         ref={heroRef}
         className="absolute inset-0 transition-transform duration-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-10"></div>
         {images.map((img, idx) => (
           <img
             key={img}
@@ -51,9 +51,10 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/30 z-10"></div>
       </div>
 
-      <div className="relative z-20 h-full flex flex-col items-center justify-center px-6">
-        <p className="text-yellow-400 text-sm tracking-[0.2em] mb-4 animate-fade-in-up uppercase font-bold bg-black/50 px-4 py-2 rounded-full inline-block backdrop-blur-sm">
-          📍 Located only 1 km from Goa Airport and 1.5 km from the Railway Station
+      <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 translate-y-[1cm]">
+        <p className="text-yellow-400 text-sm tracking-[0.2em] mb-4 animate-fade-in-up uppercase font-bold bg-black/50 px-4 py-2 rounded-full inline-block backdrop-blur-sm flex items-center gap-2">
+          <MapPin className="w-4 h-4 text-yellow-400" />
+          <span>Located only 1 km from Goa Airport and 1.5 km from the Railway Station</span>
         </p>
 
         <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-6 animate-fade-in-up animation-delay-200 leading-tight tracking-tight max-w-5xl">
@@ -86,9 +87,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 right-8 z-20 text-white/40 text-xs tracking-wider">
-        Explore
-      </div>
+      
     </section>
   );
 }
