@@ -31,7 +31,7 @@ export default function About() {
               {/* Photo */}
               <div className="flex-shrink-0 flex flex-col items-center gap-3 mt-[1.5cm]">
                 <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-yellow-400/60 shadow-2xl shadow-yellow-400/10">
-                  <img src="https://i.postimg.cc/x1d9ny30/alibabab.jpg" alt="Ali — Founder" className="w-full h-full object-cover" />
+                    <img src="https://i.postimg.cc/1XKFkhpZ/alibabab.jpg" alt="Ali — Founder" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-xs font-semibold tracking-widest uppercase text-yellow-400">Founder</span>
               </div>
