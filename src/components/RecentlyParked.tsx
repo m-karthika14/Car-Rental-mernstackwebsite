@@ -153,6 +153,86 @@ const allCars: Car[] = [
       'https://i.postimg.cc/XJ4fYGBS/TIH3.jpg'
     ]
   },
+  {
+    id: 417,
+    name: 'Thar Roxx Auto with Sunroof',
+    price: '₹5000',
+    year: 'SUV',
+    category: 'SUVs',
+    image: 'https://i.postimg.cc/y8jVcpn2/thar1.jpg',
+    gallery: [
+      'https://i.postimg.cc/y8jVcpn2/thar1.jpg',
+      'https://i.postimg.cc/dV1fNWwx/thar2.jpg',
+      'https://i.postimg.cc/q7654zt8/thar3.jpg',
+      'https://i.postimg.cc/2649LM7Q/thar4.jpg'
+    ]
+  },
+  {
+    id: 418,
+    name: 'Alcazar automatic sunroof',
+    price: '₹3500',
+    year: '7-Seat',
+    category: '7-Seaters',
+    image: 'https://i.postimg.cc/B6kDsnKy/al1.jpg',
+    gallery: [
+      'https://i.postimg.cc/B6kDsnKy/al1.jpg',
+      'https://i.postimg.cc/kXr8pD9t/al2.jpg',
+      'https://i.postimg.cc/52bzfGXW/al3.jpg',
+      'https://i.postimg.cc/yNNSZZh9/al4.jpg'
+    ]
+  },
+  {
+    id: 419,
+    name: 'Fronx Automatic',
+    price: '₹1800',
+    year: 'Hatch',
+    category: 'Hatchbacks',
+    image: 'https://i.postimg.cc/PJnx2pD0/Whats-App-Image-2026-04-18-at-8-27-42-PM.jpg',
+    gallery: [
+      'https://i.postimg.cc/PJnx2pD0/Whats-App-Image-2026-04-18-at-8-27-42-PM.jpg',
+      'https://i.postimg.cc/TPhpwXGQ/Whats-App-Image-2026-04-18-at-8-27-42-PM-(1).jpg',
+      'https://i.postimg.cc/598jjgdy/Whats-App-Image-2026-04-18-at-8-27-43-PM-(1).jpg',
+      'https://i.postimg.cc/TY9wJP37/Whats-App-Image-2026-04-18-at-8-27-43-PM.jpg'
+    ]
+  },
+  {
+    id: 420,
+    name: 'Mercedes C 300',
+    price: '₹25000',
+    year: 'Sedan',
+    category: 'Luxury',
+    image: 'https://i.postimg.cc/Dw9tWrK7/Whats-App-Image-2026-04-18-at-8-27-36-PM.jpg',
+    gallery: [
+      'https://i.postimg.cc/Dw9tWrK7/Whats-App-Image-2026-04-18-at-8-27-36-PM.jpg',
+      'https://i.postimg.cc/63XJPdHd/Whats-App-Image-2026-04-18-at-8-27-36-PM-(1).jpg',
+      'https://i.postimg.cc/C5xtyJbJ/Whats-App-Image-2026-04-18-at-8-27-37-PM.jpg'
+    ]
+  },
+  {
+    id: 421,
+    name: 'Mini Cooper convertible',
+    price: '₹1600',
+    year: 'Hatch',
+    category: 'Hatchbacks',
+    image: 'https://i.postimg.cc/SK723GS0/mini2.jpg',
+    gallery: [
+      'https://i.postimg.cc/SK723GS0/mini2.jpg',
+      'https://i.postimg.cc/vBb9ZNq6/mini.jpg',
+      'https://i.postimg.cc/HkbV8t70/mini3.jpg'
+    ]
+  },
+  {
+    id: 422,
+    name: 'Audi A3 convertible',
+    price: '₹25000',
+    year: 'Convertible',
+    category: 'Luxury',
+    image: 'https://i.postimg.cc/9QHf2qNr/audi2.jpg',
+    gallery: [
+      'https://i.postimg.cc/9QHf2qNr/audi2.jpg',
+      'https://i.postimg.cc/v8jBPKrT/audi.jpg'
+    ]
+  },
 ];
 
 export default function RecentlyParked() {
@@ -290,8 +370,6 @@ export function CarDetailsPage({ car, onBack }: { car: Car; onBack?: () => void 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-neutral-50 text-black pt-20 pb-12 px-6">
       <div className="max-w-5xl mx-auto">
-        <button onClick={() => { if (onBack) onBack(); window.location.hash = '#cars'; }} className="mb-6 px-4 py-2 bg-white rounded-full shadow text-sm font-bold text-neutral-600 flex items-center gap-2 hover:bg-neutral-100"> <ChevronLeft size={16} /> Back to Fleet</button>
-
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 lg:p-10 items-start">
             <div className="space-y-6">
@@ -304,15 +382,11 @@ export function CarDetailsPage({ car, onBack }: { car: Car; onBack?: () => void 
 
               <div className="w-full rounded-xl overflow-hidden shadow-sm flex flex-col gap-4">
                 <img src={mainImage} alt={car.name} className="w-full h-[300px] object-cover rounded-xl transition-all duration-300" />
-                
+
                 {imageList.length > 1 && (
                   <div className="flex gap-2 overflow-x-auto pb-2">
                     {imageList.map((imgUrl, idx) => (
-                      <button 
-                        key={idx} 
-                        onClick={() => setMainImage(imgUrl)}
-                        className={`shrink-0 border-2 rounded-lg overflow-hidden w-20 h-20 transition-all ${mainImage === imgUrl ? 'border-black' : 'border-transparent hover:border-neutral-300'}`}
-                      >
+                      <button key={idx} onClick={() => setMainImage(imgUrl)} className={`shrink-0 border-2 rounded-lg overflow-hidden w-20 h-20 transition-all ${mainImage === imgUrl ? 'border-black' : 'border-transparent hover:border-neutral-300'}`}>
                         <img src={imgUrl} alt={`${car.name} view ${idx + 1}`} className="w-full h-full object-cover" />
                       </button>
                     ))}

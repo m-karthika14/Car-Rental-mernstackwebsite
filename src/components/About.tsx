@@ -23,6 +23,42 @@ export default function About() {
           </p>
         </div>
 
+        {/* Founder’s Note */}
+        <div className="mb-20">
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
+
+              {/* Photo */}
+              <div className="flex-shrink-0 flex flex-col items-center gap-3 mt-[1.5cm]">
+                <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-yellow-400/60 shadow-2xl shadow-yellow-400/10">
+                  <img src="https://i.postimg.cc/x1d9ny30/alibabab.jpg" alt="Ali — Founder" className="w-full h-full object-cover" />
+                </div>
+                <span className="text-xs font-semibold tracking-widest uppercase text-yellow-400">Founder</span>
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 text-white flex flex-col justify-center">
+                <div className="w-10 h-px bg-yellow-400 mb-5" />
+                <h3 className="text-3xl font-extrabold mb-6 tracking-tight">Founder’s Note</h3>
+                <div className="text-gray-300 space-y-4 text-base leading-relaxed">
+                  <p>Hi, I’m <span className="text-white font-semibold">Ali</span>, founder of Prime Self Drive Cars.</p>
+                  <p>I started this service to make travel in Goa simple, affordable, and reliable — without hidden charges or last-minute hassles.</p>
+                  <p className="text-white font-semibold">We focus on:</p>
+                  <ul className="space-y-2 pl-1">
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />Well-maintained cars</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />Transparent pricing</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />On-time delivery</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0" />Friendly support</li>
+                  </ul>
+                  <p>Our goal is to give you a smooth, stress-free ride every time.</p>
+                  <p className="text-white font-semibold">Thank you for trusting us.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="animate-slideLeft">
             <div className="w-16 h-px bg-yellow-400 mb-6" />
