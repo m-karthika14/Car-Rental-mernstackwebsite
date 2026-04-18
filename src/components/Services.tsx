@@ -1,4 +1,5 @@
 import { CheckCircle2, Navigation2, FileCheck, PhoneCall, Car, Shield, Key } from 'lucide-react';
+import Reviews from './Reviews';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Services() {
@@ -141,6 +142,10 @@ export default function Services() {
             </div>
           </div>
         </div>
+
+        {/* Customer reviews inserted below FAQ section */}
+        <Reviews />
+
       </div>
     </section>
   );

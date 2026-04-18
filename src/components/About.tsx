@@ -1,13 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 
+const reviews = [
+  { name: 'Mohommadali Tapal', time: '3 hours ago', text: 'Transparent pricing, no hidden charges. Deposit bhi easily return ho gaya. Highly recommend.' },
+  { name: 'Mayur Tubachi', time: '3 days ago', text: 'Service was pretty reliable. We got the car delivered near our hotel, and it saved us a lot of time. Staff was polite and easy to deal with.' },
+  { name: 'Mayur Tubachi', time: '3 days ago', text: 'Amazing experience! The car was sanitized, fuel-efficient, and comfortable. Customer support was responsive and polite. Best self-drive car rental in Goa!' },
+  { name: 'Mayur Tubachi', time: '3 days ago', text: 'Very reliable car rental service in Goa. Prime Self Drive Car provided quick service and excellent support throughout the trip. Highly satisfied!' },
+  { name: 'Kiran Tubachi', time: '3 days ago', text: 'Our flight was delayed by 2 hours, but Ali at Prime Self Drive was so patient and waited for us at the airport. His customer service is top-tier. The car was excellent and very clean.' },
+  { name: 'Rajeshree Tublbachi', time: '3 days ago', text: 'We rented an Ertiga from Prime Self Drive. The vehicle was sanitized and very comfortable for our family of six. Ali even gave us some great local tips for North Goa. Excellent service!' },
+  { name: 'Mittu Tubachi', time: '3 days ago', text: 'Prime Self Drive made our Goa trip so much easier. Ali is a man of his word — everything promised during the booking was delivered. The car was fuel-efficient and perfectly maintained.' },
+  { name: 'Alexzar Kara', time: '4 days ago', text: 'Had a great experience at Goa Airport! Service was smooth and hassle-free. Special thanks to Mr. Ali for being extremely helpful and professional throughout. Highly recommend!' },
+  { name: 'Rajan Kara', time: '4 days ago', text: 'Great experience near Dabolim Airport. Ali is very professional and helpful. Car was clean, well-maintained, and delivered on time. No hidden charges. Highly recommended!' },
+  { name: 'Naren Yashwanth N', time: '4 days ago', text: 'Easily one of the best self-drive car rental services I\'ve used. Competitive pricing, direct airport delivery, and excellent service. Great value for money. Highly recommended!' },
+];
+
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
   const headerRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setIsVisible(true); }, { threshold: 0.05 });
     if (headerRef.current) obs.observe(headerRef.current);
     return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    let pos = 0;
+    let raf: number;
+    let paused = false;
+    const step = () => {
+      if (!paused) {
+        pos += 0.6;
+        const half = el.scrollWidth / 2;
+        if (pos >= half) pos = 0;
+        el.style.transform = `translateX(-${pos}px)`;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    el.addEventListener('mouseenter', () => { paused = true; });
+    el.addEventListener('mouseleave', () => { paused = false; });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -94,6 +129,36 @@ export default function About() {
                 className="w-full h-[600px] object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+            </div>
+          </div>
+        </div>
+
+        {/* Reviews */}
+        <div className="pb-8">
+          <div className="text-center mb-12">
+            <div className="w-16 h-px bg-yellow-400 mx-auto mb-8" />
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">What Our Customers Say</h3>
+            <p className="text-gray-500 text-sm">Real reviews from Google</p>
+          </div>
+          <div className="overflow-hidden">
+            <div ref={trackRef} className="flex gap-5 w-max will-change-transform">
+              {[...reviews, ...reviews].map((r, i) => (
+                <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 w-[270px] shrink-0 flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center text-yellow-400 font-bold text-sm shrink-0">
+                      {r.name[0]}
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-semibold leading-tight">{r.name}</p>
+                      <p className="text-neutral-500 text-xs">{r.time}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-sm">★</span>)}
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">{r.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
