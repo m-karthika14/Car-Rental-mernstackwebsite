@@ -211,7 +211,7 @@ const allCars: Car[] = [
   {
     id: 421,
     name: 'Mini Cooper convertible',
-    price: '₹1600',
+    price: '₹16000',
     year: 'Hatch',
     category: 'Hatchbacks',
     image: 'https://i.postimg.cc/SK723GS0/mini2.jpg',
